@@ -1,131 +1,113 @@
-# `Problem Statement: Customer Churn Prediction`
+# Customer Churn Prediction
 
-In today's competitive business landscape, customer retention is paramount for sustainable growth and success. Our challenge is to develop a predictive model that can identify customers who are at risk of churning – discontinuing their use of our service. Customer churn can lead to a significant loss of revenue and a decline in market share. By leveraging machine learning techniques, we aim to build a model that can accurately predict whether a customer is likely to churn based on their historical usage behavior, demographic information, and subscription details. This predictive model will allow us to proactively target high-risk customers with personalized retention strategies, ultimately helping us enhance customer satisfaction, reduce churn rates, and optimize our business strategies. The goal is to create an effective solution that contributes to the long-term success of our company by fostering customer loyalty and engagement.
+## Project Overview
 
-# `Data Description`
-Dataset consists customer information for a customer churn prediction problem. It includes the following columns:
+Customer churn prediction is a machine learning project that focuses on identifying customers who are likely to stop using a company’s service. In any business, retaining existing customers is very important because losing customers can directly affect revenue, growth, and customer trust.
 
-* **CustomerID**: Unique identifier for each customer.
+In this project, customer data is analyzed to understand which factors may influence churn. These factors include age, gender, location, subscription length, monthly bill amount, and total usage. By studying these details, the model learns patterns from past customer behavior and predicts whether a customer is likely to churn or continue using the service.
 
+The main aim of this project is to help the company take action before losing valuable customers. For example, if the model identifies a customer as high-risk, the company can offer discounts, better support, personalized plans, or special offers to retain that customer.
 
-* **Name**: Name of the customer.
+This project follows a complete machine learning workflow, including data cleaning, exploratory data analysis, feature preprocessing, model training, model evaluation, and final prediction.
 
+## Problem Statement
 
-* **Age: Age of the customer.**
+The goal of this project is to build a predictive machine learning model that can classify customers into two categories:
 
+* Customers who are likely to churn
+* Customers who are not likely to churn
 
-* **Gender**: Gender of the customer (Male or Female).
+Customer churn is a major problem for businesses because acquiring new customers is often more expensive than retaining existing ones. By predicting churn in advance, businesses can reduce customer loss and improve customer satisfaction.
 
+## Dataset Description
 
-* **Location**: Location where the customer is based, with options including Houston, Los Angeles, Miami, Chicago, and New York.
+The dataset contains customer-related information. Each row represents one customer, and each column provides details about that customer.
 
+The main features used in the project are:
 
-* **Subscription_Length_Months**: The number of months the customer has been subscribed.
+* **CustomerID:** Unique ID of each customer
+* **Name:** Name of the customer
+* **Age:** Age of the customer
+* **Gender:** Male or Female
+* **Location:** City where the customer is located
+* **Subscription_Length_Months:** Number of months the customer has been subscribed
+* **Monthly_Bill:** Monthly amount paid by the customer
+* **Total_Usage_GB:** Total data usage of the customer
+* **Churn:** Target column where `1` means the customer churned and `0` means the customer did not churn
 
+## Tech Stack Used
 
-* **Monthly_Bill**: Monthly bill amount for the customer.
+This project uses basic and important machine learning tools:
 
+* **Python** for programming
+* **Pandas** for data cleaning and analysis
+* **NumPy** for numerical operations
+* **Matplotlib and Seaborn** for data visualization
+* **Scikit-learn** for machine learning models
+* **StandardScaler** for feature scaling
+* **Logistic Regression, Decision Tree, and Random Forest** for classification
+* **Accuracy, Precision, Recall, F1-score, Confusion Matrix, and ROC-AUC** for model evaluation
 
-* **Total_Usage_GB**: Total usage in gigabytes.
+## Project Workflow
 
+### 1. Data Collection
 
-* **Churn**: A binary indicator (1 or 0) representing whether the customer has churned (1) or not (0).
+The customer churn dataset was loaded into a Jupyter Notebook using Pandas. The dataset contained customer demographic details, subscription information, billing details, usage behavior, and churn status.
 
-# `Teck Tech Used`
-* **Python Programming Language**
+### 2. Data Cleaning
 
-Python serves as the primary programming language for data analysis, modeling, and implementation of machine learning algorithms due to its rich ecosystem of libraries and packages.
+The dataset was checked for missing values, duplicate records, incorrect data types, and unnecessary columns. Columns like `CustomerID` and `Name` were not useful for prediction, so they were removed before training the model.
 
-* **Pandas**
+### 3. Exploratory Data Analysis
 
-Pandas is used for data manipulation and analysis. It provides data structures and functions for effectively working with structured data, such as CSV files or databases.
+Exploratory Data Analysis was performed to understand customer behavior and churn patterns. Visualizations were created to analyze how churn is affected by age, gender, location, subscription length, monthly bill, and total usage.
 
-* **NumPy**
+This helped in understanding which features may be important for predicting churn.
 
-NumPy is a fundamental package for numerical computing in Python. It provides support for large, multi-dimensional arrays and matrices, along with a wide range of mathematical functions to operate on these arrays.
+### 4. Feature Preprocessing
 
-* **Matplotlib and Seaborn**
+Categorical columns like `Gender` and `Location` were converted into numerical format because machine learning models cannot directly understand text values.
 
-Matplotlib is used for creating static, interactive, and animated visualizations in Python. Seaborn is built on top of Matplotlib and provides a high-level interface for creating informative and attractive statistical graphics.
+Numerical columns were scaled using StandardScaler so that all features were on a similar scale. This improves model performance, especially for algorithms like Logistic Regression.
 
-* **Jupyter Notebook**
+### 5. Model Training
 
-Jupyter Notebook is an interactive web-based tool that allows for creating and sharing documents containing live code, equations, visualizations, and narrative text. It is commonly used for data analysis and exploration.
+Multiple classification models were trained on the dataset, including:
 
-* **Scikit-Learn (sklearn)**
+* Logistic Regression
+* Decision Tree Classifier
+* Random Forest Classifier
 
-Scikit-Learn is a machine learning library in Python that provides a wide range of tools for various machine learning tasks such as classification, regression, clustering, model selection, and more.
+The dataset was divided into training and testing sets. The training data was used to teach the model, while the testing data was used to check how well the model performs on unseen data.
 
-* **Random Forest Classifier**
+### 6. Model Evaluation
 
-Random Forest is an ensemble learning algorithm that combines multiple decision trees to create a more robust and accurate model. It's used for both classification and regression tasks.
+The models were evaluated using different performance metrics:
 
+* **Accuracy:** Measures overall correct predictions
+* **Precision:** Measures how many predicted churn customers were actually churn customers
+* **Recall:** Measures how many actual churn customers were correctly identified
+* **F1-score:** Balances precision and recall
+* **Confusion Matrix:** Shows correct and incorrect predictions
+* **ROC-AUC:** Measures how well the model separates churn and non-churn customers
 
-* **Variance Inflation Factor (VIF)**
+Among the trained models, the best-performing model was selected for final prediction.
 
-The VIF is used to detect multicollinearity among predictor variables in a regression analysis. It helps identify redundant variables that might negatively impact model performance.
+## Outcome
 
+The final machine learning model can predict whether a customer is likely to churn or not based on customer details such as age, location, subscription length, monthly bill, and total usage.
 
-* **Model Evaluation Metrics**
+This prediction can help businesses identify high-risk customers early and take proper action to retain them. The project shows how machine learning can be used in real-world business problems to reduce customer loss and improve customer retention strategies.
 
-Various metrics like accuracy, precision, recall, F1-score, confusion matrix, ROC curve, and AUC (Area Under Curve) are used to assess the performance of the machine learning models.
+## Business Impact
 
+This project can help a company:
 
-* **Logistic Regression, Decision Tree, K-Nearest Neighbors (KNN), Support Vector Machine (SVM), Naive Bayes, AdaBoost, Gradient Boosting, XGBoost**
+* Identify customers who are likely to leave
+* Reduce customer churn rate
+* Improve customer satisfaction
+* Create targeted retention campaigns
+* Save revenue by retaining existing customers
+* Make data-driven business decisions
 
-These are different classification algorithms used to build predictive models based on the given data. Each algorithm has its own strengths and weaknesses.
-
-
-* **TensorFlow and Keras**
-
-TensorFlow is an open-source machine learning framework developed by Google. Keras is a high-level neural networks API that runs on top of TensorFlow. They are used for building and training deep learning models.
-
-
-* **Neural Networks**
-
-Neural networks are used to model complex relationships in the data. They consist of layers of interconnected nodes that simulate the behavior of neurons in the human brain. Deep learning algorithms are based on neural networks.
-
-
-* **StandardScaler**
-
-StandardScaler is used for standardizing features by removing the mean and scaling to unit variance. It's an important preprocessing step in machine learning to ensure features are on similar scales.
-
-
-* **Principal Component Analysis (PCA)**
-
-PCA is a dimensionality reduction technique that transforms the data into a new coordinate system while preserving as much variance as possible. It's useful for reducing the complexity of high-dimensional data.
-
-
-* **GridSearchCV**
-
-GridSearchCV is used for hyperparameter tuning, where a set of hyperparameters are tested exhaustively to find the combination that produces the best performance for the model.
-
-
-* **Cross-Validation**
-
-Cross-validation is a technique used to evaluate the generalization performance of a model by splitting the dataset into multiple subsets (folds) for training and testing.
-
-
-* **Early Stopping**
-
-Early stopping is a regularization technique used in training neural networks. It stops training when the model's performance on a validation set starts deteriorating, preventing overfitting.
-
-* **ModelCheckpoint**
-
-ModelCheckpoint is a callback in Keras that saves the model's weights during training. It helps to save the best model based on a specific metric, allowing you to restore the model later.
-
-
-* **ROC Curve and AUC (Receiver Operating Characteristic - Area Under Curve)**
-
-ROC curve is a graphical representation of the trade-off between the true positive rate (sensitivity) and the false positive rate (1-specificity). AUC measures the area under the ROC curve and is used as a metric to evaluate binary classification models.
-
-
-* **Standard Machine Learning Libraries**
-
-The project utilizes standard machine learning libraries like SciPy and scikit-learn for various tasks including preprocessing, model selection, hyperparameter tuning, and model evaluation.
-
-
-# `Outcome`
-The outcome of this customer churn prediction project involves developing a machine learning model to predict whether customers are likely to churn or not. This prediction is based on various customer attributes such as age, gender, location, subscription length, monthly bill, and total usage. The model's primary purpose is to assist in identifying customers who are at a higher risk of churning, enabling the business to take proactive measures to retain them. By using the trained model to predict churn, the company can allocate resources more effectively, personalize engagement strategies, and implement targeted retention efforts. Ultimately, the project's success is measured by the model's ability to make predictions, helping the company reduce churn rates, improve customer satisfaction, and optimize its customer retention strategies.
-
-
+Overall, this project demonstrates the use of machine learning for solving a practical business problem.
